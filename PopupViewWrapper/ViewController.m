@@ -110,7 +110,7 @@
 }
 
 - (IBAction)onDemo2BtnClicked:(id)sender {
-    // 复杂一些或有交互的浮层，可以集成自KKPopupView
+    // 复杂一些或有交互的浮层，可以继承自KKPopupView
     DemoPopupView *popupView = [[DemoPopupView alloc] initWithFrame:CGRectMake(0, 0, 200, 180)];
     popupView.backgroundColor = [UIColor whiteColor];
     popupView.center = self.view.center;
