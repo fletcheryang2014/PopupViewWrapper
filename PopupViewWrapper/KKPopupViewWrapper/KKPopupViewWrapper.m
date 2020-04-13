@@ -7,18 +7,23 @@
 
 #import "KKPopupViewWrapper.h"
 
+@protocol KKPopupViewWrapperProtocol <NSObject>
+
+@property (nonatomic, weak) KKPopupViewWrapper *wrapper;
+
+@end
+
+
 @implementation KKPopupViewWrapper
 {
     id<KKPopupViewProtocol> _popupView;
 }
 
-@synthesize wrapper;
-
 - (instancetype)initWithView:(id<KKPopupViewProtocol>)popupView
 {
     if (self = [super init]) {
         _popupView = popupView;
-        _popupView.wrapper = self;
+        ((id<KKPopupViewWrapperProtocol>)_popupView).wrapper = self;
     }
     return self;
 }
@@ -47,6 +52,9 @@
 
 @end
 
+@interface KKPopupView () <KKPopupViewWrapperProtocol>
+
+@end
 
 @implementation KKPopupView
 
@@ -67,6 +75,9 @@
 
 @end
 
+@interface KKPopupObject () <KKPopupViewWrapperProtocol>
+
+@end
 
 @implementation KKPopupObject
 
